@@ -23,68 +23,57 @@ const NavBar = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+    <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Button
+        type="text"
+        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        onClick={() => setCollapsed(!collapsed)}
+        style={{
+          fontSize: "16px",
+          width: 64,
+          height: 64,
+        }}
+      />
+      <div className="logo-vertical" />
 
-        <Menu
-          className="menu"
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          items={[
-            {
-              key: "1",
-              icon: <HomeOutlined />,
-              label: "Home",
-            },
-            {
-              key: "2",
-              icon: <InfoCircleOutlined />,
-              label: "About",
-            },
+      <Menu
+        className="menu"
+        theme="dark"
+        mode="inline"
+        defaultSelectedKeys={["1"]}
+        items={[
+          {
+            key: "1",
+            icon: <HomeOutlined />,
+            label: "Home",
+          },
+          {
+            key: "2",
+            icon: <InfoCircleOutlined />,
+            label: "About",
+          },
 
-            {
-              key: "3",
-              path: "/signup",
-              icon: <UserAddOutlined />,
-              label: "Sign Up",
-            },
-            {
-              key: "4",
-              path: "/signin",
-              icon: <LoginOutlined />,
-              label: "Sign In",
-            },
-          ].map((item, index) => {
-            return {
-              key: index,
-              label: <Link to={item.path}>{item.label}</Link>,
-              icon: item.icon,
-            };
-          })}
-        />
-      </Sider>
-      <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
-      </Layout>
-    </Layout>
+          {
+            key: "3",
+            path: "/signup",
+            icon: <UserAddOutlined />,
+            label: "Sign Up",
+          },
+          {
+            key: "4",
+            path: "/signin",
+            icon: <LoginOutlined />,
+            label: "Sign In",
+          },
+        ].map((item, index) => {
+          return {
+            key: index,
+            label: <Link to={item.path}>{item.label}</Link>,
+            icon: item.icon,
+          };
+        })}
+      />
+    </Sider>
   );
 };
 
