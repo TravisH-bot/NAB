@@ -10,7 +10,6 @@ import Profile from "./pages/profile/Profile.page";
 import PartyRegistry from "./pages/registry/Registry.page";
 import SignUp from "./pages/signup/Signup.page";
 import SignIn from "./pages/signin/Signin.page";
-import Registry from "./pages/registry/Registry.page";
 
 const App = () => {
   return (
