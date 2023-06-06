@@ -82,7 +82,7 @@ const NavBar = () => {
               data-te-navbar-nav-ref
             >
               <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                {/* <!-- Dashboard link --> */}
+                {/* <!-- About link --> */}
                 <NavLink
                   to="/about"
                   className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
@@ -91,7 +91,7 @@ const NavBar = () => {
                   About
                 </NavLink>
               </li>
-              {/* <!-- Team link --> */}
+              {/* <!-- Sign Up link --> */}
               <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <NavLink
                   to="/signup"
@@ -101,7 +101,7 @@ const NavBar = () => {
                   Sign Up
                 </NavLink>
               </li>
-              {/* <!-- Projects link --> */}
+              {/* <!-- Sign In link --> */}
               <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <NavLink
                   to="/signin"
@@ -109,6 +109,16 @@ const NavBar = () => {
                   data-te-nav-link-ref
                 >
                   Sign In
+                </NavLink>
+              </li>
+              {/* <!-- Registry link --> */}
+              <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                <NavLink
+                  to="/registry"
+                  className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                  data-te-nav-link-ref
+                >
+                  Registry
                 </NavLink>
               </li>
             </ul>
