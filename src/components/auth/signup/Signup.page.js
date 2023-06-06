@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Signup.styles.css";
 // Initialization for ES Users
 import { Ripple, Input, initTE } from "tw-elements";
+import { auth } from "../../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 initTE({ Ripple, Input });
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const signUp = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div className="test flex justify-center">
         <div className="signUpForm">
           <div class="block max-w-md rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-            <form>
+            <form onSubmit={signUp}>
               <div class="grid grid-cols-2 gap-4">
                 {/* <!--First name input--> */}
                 <div class="relative mb-6" data-te-input-wrapper-init>
@@ -52,6 +67,8 @@ const SignUp = () => {
               <div class="relative mb-6" data-te-input-wrapper-init>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                   id="exampleInput125"
                   placeholder="Email address"
@@ -68,6 +85,8 @@ const SignUp = () => {
               <div class="relative mb-6" data-te-input-wrapper-init>
                 <input
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                   id="exampleInput126"
                   placeholder="Password"

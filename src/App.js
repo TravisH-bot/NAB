@@ -8,14 +8,15 @@ import Landing from "./pages/landing/Landing.page";
 import About from "./pages/about/About.page";
 import Profile from "./pages/profile/Profile.page";
 import PartyRegistry from "./pages/registry/Registry.page";
-import SignUp from "./pages/signup/Signup.page";
-import SignIn from "./pages/signin/Signin.page";
+import SignUp from "./components/auth/signup/Signup.page";
+import SignIn from "./components/auth/signin/Signin.page";
+import AuthDetails from "./components/AuthDetails";
 
 const App = () => {
   return (
     <>
       <NavBar />
-
+      <AuthDetails />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/about" element={<About />} />
