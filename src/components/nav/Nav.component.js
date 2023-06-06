@@ -159,34 +159,22 @@ const NavBar = () => {
               data-te-navbar-nav-ref
             >
               <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <NavLink
-                  to="/profile"
-                  className="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
-                  id="dropdownMenuButton2"
-                  role="button"
-                  aria-expanded="false"
-                >
-                  {/* <!-- User avatar/profile link --> */}
-                  <img
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    className="defaultImg rounded-full"
-                    style={{ height: "35px", width: "35px" }}
-                    alt=""
-                  />
-                </NavLink>
+                {/* <!-- User avatar/profile link --> */}
                 {authUser ? (
-                  <NavLink as="span" onClick={userSignOut}>
-                    <>
+                  <div className="flex">
+                    <NavLink to="/profile">
                       <img
                         src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=826&t=st=1686084076~exp=1686084676~hmac=49e408e47428f70de0f2a56c6c260196c314f58f77372aca1e4a119675046f20"
                         className="userImg rounded-full"
                         style={{ height: "35px", width: "35px" }}
                         alt=""
                       />
-                      <p>{`Signed In as ${authUser.email}`}</p>
-                    </>
-                    Sign Out
-                  </NavLink>
+                    </NavLink>
+                    <p>{`Signed In as ${authUser.email}`}</p>
+                    <NavLink as="span" onClick={userSignOut}>
+                      Sign Out
+                    </NavLink>
+                  </div>
                 ) : (
                   <NavLink to="/signin">Sign In</NavLink>
                 )}

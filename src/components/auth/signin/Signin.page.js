@@ -25,13 +25,9 @@ const SignIn = () => {
         console.log(error);
       });
 
-    // setEmail({
-    //   email: " ",
-    // });
+    setEmail("");
 
-    // setPassword({
-    //   password: " ",
-    // });
+    setPassword("");
   };
 
   return (
