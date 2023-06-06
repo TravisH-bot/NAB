@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, Link } from "react-router-dom";
 import "./Nav.styles.css";
 
 // Initialization for ES Users
@@ -8,6 +8,21 @@ import { Collapse, Dropdown, initTE } from "tw-elements";
 initTE({ Collapse, Dropdown });
 
 const NavBar = () => {
+  //Theme
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const handleThemeSwitcher = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <>
       <nav
@@ -16,6 +31,7 @@ const NavBar = () => {
       >
         <div className="flex w-full flex-wrap items-center justify-between px-3">
           {/* <!-- Hamburger button for mobile view --> */}
+          <button onClick={handleThemeSwitcher}>Theme</button>
           <button
             className="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
             type="button"
@@ -34,9 +50,9 @@ const NavBar = () => {
                 className="h-7 w-7"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
             </span>
@@ -70,7 +86,6 @@ const NavBar = () => {
                 <NavLink
                   to="/about"
                   className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                  href="#"
                   data-te-nav-link-ref
                 >
                   About
@@ -81,7 +96,6 @@ const NavBar = () => {
                 <NavLink
                   to="/signup"
                   className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-                  href="#"
                   data-te-nav-link-ref
                 >
                   Sign Up
@@ -92,7 +106,6 @@ const NavBar = () => {
                 <NavLink
                   to="/signin"
                   className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-                  href="#"
                   data-te-nav-link-ref
                 >
                   Sign In
@@ -108,7 +121,6 @@ const NavBar = () => {
               {/* <!-- First dropdown trigger --> */}
               <a
                 className="hidden-arrow mr-4 flex items-center text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-                href="#"
                 id="dropdownMenuButton1"
                 role="button"
                 data-te-dropdown-toggle-ref
@@ -123,9 +135,9 @@ const NavBar = () => {
                     className="h-5 w-5"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </span>
@@ -144,7 +156,6 @@ const NavBar = () => {
                 <li>
                   <a
                     className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                    href="#"
                     data-te-dropdown-item-ref
                   >
                     Action
@@ -153,7 +164,6 @@ const NavBar = () => {
                 <li>
                   <a
                     className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                    href="#"
                     data-te-dropdown-item-ref
                   >
                     Another action
@@ -162,7 +172,6 @@ const NavBar = () => {
                 <li>
                   <a
                     className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                    href="#"
                     data-te-dropdown-item-ref
                   >
                     Something else here
@@ -176,7 +185,6 @@ const NavBar = () => {
               {/* <!-- Second dropdown trigger --> */}
               <a
                 className="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
-                href="#"
                 id="dropdownMenuButton2"
                 role="button"
                 data-te-dropdown-toggle-ref
@@ -188,7 +196,7 @@ const NavBar = () => {
                   className="rounded-full"
                   style={{ height: "25px", width: "25px" }}
                   alt=""
-                  loading="lazy"
+                  // loading="lazy"
                 />
               </a>
               {/* <!-- Second dropdown menu --> */}
@@ -199,19 +207,17 @@ const NavBar = () => {
               >
                 {/* <!-- Second dropdown menu items --> */}
                 <li>
-                  <NavLink
+                  <Link
                     to="/profile"
                     className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                    href="#"
                     data-te-dropdown-item-ref
                   >
-                    Action
-                  </NavLink>
+                    Profile
+                  </Link>
                 </li>
                 <li>
                   <a
                     className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                    href="#"
                     data-te-dropdown-item-ref
                   >
                     Another action
@@ -220,7 +226,6 @@ const NavBar = () => {
                 <li>
                   <a
                     className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                    href="#"
                     data-te-dropdown-item-ref
                   >
                     Something else here
