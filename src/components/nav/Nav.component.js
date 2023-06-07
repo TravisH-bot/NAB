@@ -105,17 +105,19 @@ const NavBar = () => {
             data-te-collapse-item
           >
             {/* <!-- Logo --> */}
-            <a
-              className="mb-4 mr-2 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
-              href="#"
-            >
-              <img
-                src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp"
-                style={{ height: "15px" }}
-                alt=""
-                loading="lazy"
-              />
-            </a>
+            <NavLink to="/">
+              <a
+                className="mb-4 mr-2 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
+                href="#"
+              >
+                <img
+                  src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp"
+                  style={{ height: "15px" }}
+                  alt=""
+                  loading="lazy"
+                />
+              </a>
+            </NavLink>
             {/* <!-- Left navigation links --> */}
             <ul
               className="list-style-none mr-auto flex flex-col pl-0 lg:flex-row"
