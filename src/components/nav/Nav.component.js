@@ -66,9 +66,12 @@ const NavBar = () => {
         className="flex-no-wrap relative flex w-full items-center justify-between bg-neutral-100 py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
         data-te-navbar-ref
       >
-        <div className="flex w-full flex-wrap items-center justify-between px-3">
+        <div className="flex w-full flex-wrap items-center justify-evenly px-4">
           {/* <!-- Hamburger button for mobile view --> */}
-          <button onClick={handleThemeSwitcher}>Theme</button>
+          <button className="theme px-4" onClick={handleThemeSwitcher}>
+            Theme
+          </button>
+
           <button
             className="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
             type="button"

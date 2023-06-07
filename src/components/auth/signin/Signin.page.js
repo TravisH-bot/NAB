@@ -31,8 +31,8 @@ const SignIn = () => {
   };
 
   return (
-    <section className="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
-      <div className="container h-full p-10">
+    <section className="flex justify-center gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
+      <div className="container  h-full p-10">
         <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
           <div className="w-full">
             <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
@@ -48,7 +48,7 @@ const SignIn = () => {
                         alt="logo"
                       />
                       <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
-                        We are The Lotus Team
+                        We are The NAB Team
                       </h4>
                     </div>
 
