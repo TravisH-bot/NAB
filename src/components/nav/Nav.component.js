@@ -82,7 +82,7 @@ const NavBar = () => {
             aria-label="Toggle navigation"
           >
             {/* <!-- Hamburger icon --> */}
-            <span className="[&>svg]:w-7">
+            <div className="[&>svg]:w-7">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ const NavBar = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </span>
+            </div>
           </button>
 
           {/* <!-- Collapsible navigation container --> */}
@@ -176,9 +176,7 @@ const NavBar = () => {
                       />
                     </NavLink>
                     <p>{`Signed In as ${authUser.email}`}</p>
-                    <NavLink as="span" onClick={userSignOut}>
-                      Sign Out
-                    </NavLink>
+                    <NavLink onClick={userSignOut}>Sign Out</NavLink>
                   </div>
                 ) : (
                   <NavLink to="/signin">Sign In</NavLink>
