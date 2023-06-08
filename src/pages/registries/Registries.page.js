@@ -26,6 +26,18 @@ const PartyRegistries = (props) => {
     setItems(remainingItems);
   };
 
+  const editItem = (id, newName) => {
+    const editedItemList = items.map((item) => {
+      //if this item has the same ID as the edited item
+      if (id === item.id) {
+        //
+        return { ...item, name: newName };
+      }
+      return item;
+    });
+    setItems(editedItemList);
+  };
+
   const registryList = items.map((item) => (
     <PartyRegistry
       id={item.id}
@@ -34,6 +46,7 @@ const PartyRegistries = (props) => {
       key={item.id}
       toggleItemCompleted={toggleItemCompleted}
       deleteItem={deleteItem}
+      editItem={editItem}
     />
   ));
 
