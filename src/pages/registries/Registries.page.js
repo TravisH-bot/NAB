@@ -5,8 +5,17 @@ import Form from "../../components/form/Form.component";
 import FilterButton from "../../components/filterButton/FilterButton.component";
 import { nanoid } from "nanoid";
 
+const FILTER_MAP = {
+  All: () => true,
+  Active: (item) => !item.completed,
+  Completed: (item) => item.completed,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 const PartyRegistries = (props) => {
   const [items, setItems] = useState(props.items);
+  const [filter, setFilter] = useState("All");
 
   const toggleItemCompleted = (id) => {
     const updatedItems = items.map((item) => {
@@ -38,15 +47,26 @@ const PartyRegistries = (props) => {
     setItems(editedItemList);
   };
 
-  const registryList = items.map((item) => (
-    <PartyRegistry
-      id={item.id}
-      name={item.name}
-      completed={item.completed}
-      key={item.id}
-      toggleItemCompleted={toggleItemCompleted}
-      deleteItem={deleteItem}
-      editItem={editItem}
+  const registryList = items
+    .filter(FILTER_MAP[filter])
+    .map((item) => (
+      <PartyRegistry
+        id={item.id}
+        name={item.name}
+        completed={item.completed}
+        key={item.id}
+        toggleItemCompleted={toggleItemCompleted}
+        deleteItem={deleteItem}
+        editItem={editItem}
+      />
+    ));
+
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={name}
+      name={name}
+      isPressed={name === filter}
+      setFilter={setFilter}
     />
   ));
 
@@ -63,11 +83,7 @@ const PartyRegistries = (props) => {
       <div className="todoapp stack-large">
         <h1>Party Registry</h1>
         <Form addItem={addItem} />
-        <div className="filters btn-group stack-exception">
-          <FilterButton />
-          <FilterButton />
-          <FilterButton />
-        </div>
+        <div className="filters btn-group stack-exception">{filterList}</div>
         <h2 id="list-heading">{headingText}</h2>
         <ul
           role="list"
