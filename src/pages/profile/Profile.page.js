@@ -6,7 +6,6 @@ import { nanoid } from "nanoid";
 import { useAuth, database } from "../../firebase";
 import { updateProfile } from "firebase/auth";
 import { Ripple, initTE } from "tw-elements";
-import { ref as ref2, set } from "firebase/database";
 
 initTE({ Ripple });
 
@@ -31,16 +30,17 @@ const Profile = () => {
     }
   }, [currentUser]);
 
-  const uploadImage = (currentUser) => {
+  const uploadImage = (currentUser, setLoading) => {
     if (imageUpload === null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + nanoid()}`);
+    const imageRef = ref(
+      storage,
+      `images/${imageUpload.name + currentUser.uid + nanoid()}`
+    );
     uploadBytes(imageRef, imageUpload)
-      .then((snapshot) => {
+      .then(() => {
         getDownloadURL(imageRef)
           .then((url) => {
-            set(ref2(database, "profile-urls/" + currentUser.uid), {
-              profile_picture: url,
-            });
+            setUrl(url);
           })
           .catch((error) => {
             console.log(error.message, "error getting the image url");
