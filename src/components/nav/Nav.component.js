@@ -168,12 +168,7 @@ const NavBar = () => {
                 {authUser ? (
                   <div className="flex">
                     <NavLink to="/profile">
-                      <img
-                        src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=826&t=st=1686084076~exp=1686084676~hmac=49e408e47428f70de0f2a56c6c260196c314f58f77372aca1e4a119675046f20"
-                        className="userImg rounded-full"
-                        style={{ height: "35px", width: "35px" }}
-                        alt=""
-                      />
+                      <button>profile</button>
                     </NavLink>
                     <p>{`Signed In as ${authUser.email}`}</p>
                     <NavLink onClick={userSignOut}>Sign Out</NavLink>
